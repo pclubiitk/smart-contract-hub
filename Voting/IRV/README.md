@@ -80,6 +80,9 @@ period = 3 starts
 
 Rest of approach and smaller details are explained in a-not-so-properly explained manner in [approach.txt](./approach.txt)
 
+Test Election tried on [REMIX IDE](https://remix.ethereum.org/)
+![screenshotOfElectionInRemix](./assets/output_with_winner2.png)
+
 ## Team
 
 - S. Pradeep
