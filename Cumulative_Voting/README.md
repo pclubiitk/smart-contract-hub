@@ -6,6 +6,8 @@ Cumulative voting (also referred to as accumulation voting or multi-voting) is a
 
 ## Mechanism
 
+This smart contract implements a cumulative voting mechanism. The owner of the contract has the power to call for nominations for candidates and open the elections, following which citizens can register as candidates and/or voters and then cast their votes. Each registered voter begins with 3 votes which they can choose to distribute among the various candidates. The owner is also the only one with the option of stopping the registrations. Once the votes have been case, the owner is in-charge of calculating the total votes won by eahc candidate and displaying the results of the election. The various functions, structures and variables used to write the contract are as given below. 
+
 ### Contract - Cumulative_voting
 - Struct - <i>candidate</i>
   - string variable <i>name</i> to store the candidate's name
@@ -38,10 +40,13 @@ Cumulative voting (also referred to as accumulation voting or multi-voting) is a
 - Function - <i>closeVoting</i>
 - Function - <i>castVote</i>
 - string[] winners
-- uint256 variable winnerVoteCount
+- uint256 variable winnerVoteCount 
 - Function - <i>compileResult</i>
 - Function - <i>viewResult</i>
 
-## Instructions to run
-
 ## Drawbacks
+- In case the last two candidates get the same number of votes and there is only one seat vacant, then according to this smart contract, the person with the lower index number in the array, i.e, the candidate who has registered earlier will be declared as winner. So to fix such tie breakers we might have to use some external conditions.
+
+- While Authorising candidates and voters, here we have assumed that the voters and candidates are authorised to begin with, but in a real-world scenario we would have to use some form of identification such as a Voter ID to authorise a person casting vote or competing in the election.
+
+- In our code the owner of the contract has the power to close nominations, open voting, close voting and declare the result. The <b>Owner</b> can manually perform these functions at the moment when they wish to do so. This flaw of manually doing such things can be automated using block timestamp and providing with the time of registration, voting and result declaration in the code initially.
