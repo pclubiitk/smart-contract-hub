@@ -1,6 +1,6 @@
 # Voting Smart Contract - Borda Count
 
-**Introduction**:This contract is a decentralised implementation of the Borda Count Voting mechanism. In this mechanism, a voter assigns ranks to the candidates, and accordingly the candidates gain some points. In our implementation, the candidate at rank 1 receives 5 point, 3 points for rank 2 and 1 point for rank 3. These points are then added up to calculate the total points gained by the candidate. Finally, the candidate with highest points is declared winner.
+**Introduction**: This contract is a decentralised implementation of the Borda Count Voting mechanism. In this mechanism, a voter assigns ranks to the candidates, and accordingly the candidates gain some points. In our implementation, the candidate at rank 1 receives 5 point, 3 points for rank 2 and 1 point for rank 3. These points are then added up to calculate the total points gained by the candidate. Finally, the candidate with highest points is declared winner.
 
 - ## Constructor:
   When the contract is deployed from an address, the `Chairperson` is set as the address of the creator:   
