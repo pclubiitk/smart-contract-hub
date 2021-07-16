@@ -129,6 +129,32 @@ contract BordaCount {
         candidates[candidate3].voteCount3 ++ ;
     }
 
-    
+    /** 
+     * @dev Computes the winning candidate taking all previous votes into account.
+     * @return winningcandidate_ index of winning candidate in the candid ates array
+     */
+     
+    function winningcandidate() public view
+            returns (uint winningcandidate_)
+    {
+        uint winningVoteCount = 0; 
+        for (uint p = 0; p < candidates.length; p++) {
+        		uint voteCount = (candidates[p].voteCount1)*5 + (candidates[p].voteCount2)*3 + (candidates[p].voteCount3);
+            if ( voteCount > winningVoteCount) {
+                winningVoteCount = voteCount;
+                winningcandidate_ = p;
+            }
+        }
+    }
+
+    /** 
+     * @dev Calls winningcandidate() function to get the index of the winner contained in the candidates array and then
+     * @return winnerName_ the name of the winner
+     */
+    function winnerName() public view
+            returns (address winnerName_)
+    {
+        winnerName_ = candidates[winningcandidate()].name;
+    }
    
 }
