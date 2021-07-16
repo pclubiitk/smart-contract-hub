@@ -82,6 +82,53 @@ contract BordaCount {
     } 
     
         uint256 private num_of_candidates=0;
+        
+            
+    uint pointing_to_tip = 0;
+    function approve_candidates() public {
+        require(
+            msg.sender == chairperson,
+            "Only chairperson can give right to vote."
+        );
+        Candidate memory temp;
+
+        temp.voteCount1 = 0;
+        temp.voteCount2 = 0;
+        temp.voteCount3 = 0;
+          
+        
+        for(uint i=pointing_to_tip;i< provisional_candidates.length;i++){
+            temp.index = num_of_candidates++;
+            
+            temp.name= provisional_candidates[i];
+            candidates.push(temp);
+        }
+        pointing_to_tip=provisional_candidates.length;
+        
+    }
+    
+    
+
+
+    
+    function vote(uint candidate1, uint candidate2, uint candidate3) public {
+        require(isPresent[msg.sender]==true, "Not Registered.");
+        Voter storage sender = voters[msg.sender];
+        require(!sender.voted, "Already voted.");
+        sender.voted = true;
+        sender.voteindex1 = candidate1;
+        sender.voteindex2 = candidate2;
+        sender.voteindex3 = candidate3;
+    
+        // If 'Candidate' is out of the range of the array,
+        // this will throw automatically and revert all
+        // changes.
+        require((candidate1!=candidate2)&&(candidate2!=candidate3)&&(candidate3!=candidate1), "ERROR:REPEATED CANDIDATE BY SAME VOTER.");
+        candidates[candidate1].voteCount1 ++ ;
+        candidates[candidate2].voteCount2 ++ ;
+        candidates[candidate3].voteCount3 ++ ;
+    }
+
     
    
 }
