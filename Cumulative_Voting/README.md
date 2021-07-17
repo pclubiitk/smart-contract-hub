@@ -6,7 +6,7 @@ Cumulative voting (also referred to as accumulation voting or multi-voting) is a
 
 ## Mechanism
 
-This smart contract implements a cumulative voting mechanism. The owner of the contract has the power to call for nominations for candidates and open the elections, following which citizens can register as candidates and/or voters and then cast their votes. Each registered voter begins with 1 votes which can be changed by the owner. The owner is also the only one with the option of stopping the registrations. Once the votes have been cast, the owner is in-charge of calculating the total votes won by each candidate and displaying the results of the election. The various functions, structures and variables used to write the contract are as given below. 
+This smart contract implements a cumulative voting mechanism. The owner of the contract has the power to call for nominations for candidates and open the elections, following which citizens can register as candidates and/or voters and then cast their votes. Each registered voter begins with 1 vote which can be changed by the owner. The owner is also the only one with the option of stopping the registrations. Once the votes have been cast, the owner is in-charge of calculating the total votes won by each candidate and displaying the results of the election. The various functions, structures and variables used to write the contract are as given below. 
 
 ### Contract - Cumulative_voting
 
@@ -31,19 +31,19 @@ This smart contract implements a cumulative voting mechanism. The owner of the c
 - bool variable <i>nominationsBeingAccepted</i>
 - bool variable <i>resultDeclared</i>
 - <i>constructor</i> - To initialize variables 
-- Function - <i>getCandidatelist</i>
-- Function - <i>signUpVoter</i>
-- Function - <i>signUpCandidate</i>
-- Function - <i>authoriseVoters</i>
-- Function - <i>authoriseCandidates</i>
-- Function - <i>closeNominations</i>
-- Function - <i>openVoting</i>
-- Function - <i>closeVoting</i>
-- Function - <i>castVote</i>
+- Function - <i>getCandidatelist</i> - Fetches the candidate list
+- Function - <i>signUpVoter</i> - Registers an authorised voter to vote in the elections
+- Function - <i>signUpCandidate</i> - Registers an authorised candidate to stand in the elections
+- Function - <i>authoriseVoters</i> - Used by only the owner to authorise voters
+- Function - <i>authoriseCandidates</i> - Used by only the owner to authorise candidates
+- Function - <i>closeNominations</i> - Used by only the owner to close nominations
+- Function - <i>openVoting</i> - Used by only the owner to open voting
+- Function - <i>closeVoting</i> - Used by only the owner to close voting
+- Function - <i>castVote</i> - Used by an authorised voter to cast their vote
 - string[] winners
-- uint256 variable winnerVoteCount 
-- Function - <i>compileResult</i>
-- Function - <i>viewResult</i>
+- uint256 variable winnerVoteCount - Stores the voteCount of the winner
+- Function - <i>compileResult</i> - Counts the number of votes received by each candidate and decides the winner of the election
+- Function - <i>viewResult</i> - Returns the name of the winner and the number of votes, if the result has been declared
 
 ## Versatility of the code
 
