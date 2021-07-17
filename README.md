@@ -13,5 +13,5 @@ It takes in the number of candidates to be elected in the variable 'winners'
 It returns the names of the winners in an array names 'winnerName_'
 
 Project by-
-Muditt Khurana
-200602
+Muditt Khurana   200602
+Aryaman Singhal  200196
