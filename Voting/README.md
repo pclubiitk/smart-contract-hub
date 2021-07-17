@@ -1,6 +1,5 @@
 # A Solidity contract to implement the mechanism of cumulative voting
 
-By Aditya Subramanian (https://github.com/pingy711), Ayush Anand(https://github.com/yushananda) and Yash Goel(https://github.com/yashgoel72).
 ## Cumulative Voting
 
 Cumulative voting (also referred to as accumulation voting or multi-voting) is a multiple-winner cardinal voting method intended to promote more proportional representation than winner-take-all elections. A cumulative voting election permits voters in an election for more than one seat to put more than one vote on a preferred candidate. When voters in the minority concentrate their votes in this way, it increases their chances of obtaining representation in a legislative body.
@@ -66,3 +65,9 @@ These 2 features allow the code to be used in various situations apart from thos
 
 - This version of the code does not support voters with different weightages. It treats each and every voter as the same and gives all of them the same number of votes. Often in cumulative voting we could see circumstances where each voters could be having a different power or different weight for their vote being required. We can add a 'uint256 weight' under voter and will have to modify the cast castVote function a little in order to implement it.
 - This system doesn't allow the delegation of votes and in newer versions this feature could be added.
+
+
+## Contributors
+- [Aditya Subramanian](https://github.com/pingy711)
+- [Ayush Anand](https://github.com/yushananda)
+- [Yash Goel](https://github.com/yashgoel72)
