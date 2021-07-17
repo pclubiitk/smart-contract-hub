@@ -6,9 +6,10 @@ Cumulative voting (also referred to as accumulation voting or multi-voting) is a
 
 ## Mechanism
 
-This smart contract implements a cumulative voting mechanism. The owner of the contract has the power to call for nominations for candidates and open the elections, following which citizens can register as candidates and/or voters and then cast their votes. Each registered voter begins with 3 votes which they can choose to distribute among the various candidates. The owner is also the only one with the option of stopping the registrations. Once the votes have been case, the owner is in-charge of calculating the total votes won by eahc candidate and displaying the results of the election. The various functions, structures and variables used to write the contract are as given below. 
+This smart contract implements a cumulative voting mechanism. The owner of the contract has the power to call for nominations for candidates and open the elections, following which citizens can register as candidates and/or voters and then cast their votes. Each registered voter begins with 1 votes which can be changed by the owner. The owner is also the only one with the option of stopping the registrations. Once the votes have been cast, the owner is in-charge of calculating the total votes won by each candidate and displaying the results of the election. The various functions, structures and variables used to write the contract are as given below. 
 
 ### Contract - Cumulative_voting
+
 - Struct - <i>candidate</i>
   - string variable <i>name</i> to store the candidate's name
   - address variable <i>unid</i> to store the candidates unique ID
@@ -43,6 +44,14 @@ This smart contract implements a cumulative voting mechanism. The owner of the c
 - uint256 variable winnerVoteCount 
 - Function - <i>compileResult</i>
 - Function - <i>viewResult</i>
+
+## Versatility of the code
+
+The code written can be aptly modified and made suitable to cater to the need of any individual situation simply by:
+- changing the number of seats using the getNumberOfSeats
+- changing the authorization process for voters and/or candidates
+
+These 2 features allow the code to be used in various situations apart from those immediately guessable
 
 ## Drawbacks
 - In case the last two candidates get the same number of votes and there is only one seat vacant, then according to this smart contract, the person with the lower index number in the array, i.e, the candidate who has registered earlier will be declared as winner. So to fix such tie breakers we might have to use some external conditions.
