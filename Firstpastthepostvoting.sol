@@ -52,7 +52,7 @@ contract FPTP {
     }
     
     function voteYour_NETA(address NETA) public{
-        if(voters[msg.sender].voted == false && NETA_approved[NETA] == true ){vote_cnt[NETA]+=1;}
+        if(voters[msg.sender].voted == false && NETA_approved[NETA] == true ){vote_cnt[NETA]+=1;voters[msg.sender].voted = true;}
     }
     
     function find_winner() public isChairperson{
