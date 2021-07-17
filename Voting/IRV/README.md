@@ -52,29 +52,30 @@ If there is indeed, a draw, the Chairperson has to re-initiate the contract, or 
 
 ## Implementing IRV - Functions involved
 
-- Constructor
+- constructor()
 
 period = 1 starts
+registrationSession
 
-- registrationSession
-- rightToVoteAskingPart
-- rightToVoteConfirmation
-- rightToCandidatureAskingPart
-- rightToCandidatureConfirmation
+- RequestVotingRights()
+- ApproveVoters()
+- RequestCandidature(string memory name)
+- ApproveCandidature()
+- closeRegistrationPeriod()
 
 period = 2 starts
 votingSession
 
-- showCandidate(i)
-- showCandidates(return string (delimiter (i)))
-- vote
+- CheckNumberOfCandidates()
+- CheckCandidateName(uint256 k)
+- vote(uint256[] memory preferenceList)
 
 countingSession
 period = 3 starts
 
-- mainCalculation
-- majorityElseEliminated
-- eliminateCandidates
+- mainCalculation()
+- majorityOrEliminatedCandidate()
+- eliminateCandidate(uint256 indexOfLosingCandidate)
 
 ## Approach Layout
 
@@ -85,6 +86,6 @@ Test Election tried on [REMIX IDE](https://remix.ethereum.org/)
 
 ## Team
 
-- S. Pradeep
-- Piyush Beegala
-- B. Anshuman
+- [S. Pradeep](https://github.com/suresh-pradeep)
+- [Piyush Beegala](https://github.com/franticalien)
+- [B. Anshuman](https://github.com/ba-13)
