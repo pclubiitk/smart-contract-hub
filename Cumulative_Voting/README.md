@@ -40,8 +40,8 @@ This smart contract implements a cumulative voting mechanism. The owner of the c
 - Function - <i>openVoting</i> - Used by only the owner to open voting
 - Function - <i>closeVoting</i> - Used by only the owner to close voting
 - Function - <i>castVote</i> - Used by an authorised voter to cast their vote
-- string[] winners
-- uint256 variable winnerVoteCount - Stores the voteCount of the winner
+- string[] <i>winners</i>
+- uint256 variable <i>winnerVoteCount</i> - Stores the voteCount of the winner
 - Function - <i>compileResult</i> - Counts the number of votes received by each candidate and decides the winner of the election
 - Function - <i>viewResult</i> - Returns the name of the winner and the number of votes, if the result has been declared
 
@@ -51,11 +51,17 @@ The code written can be aptly modified and made suitable to cater to the need of
 - changing the number of seats using the getNumberOfSeats
 - changing the authorization process for voters and/or candidates
 
-These 2 features allow the code to be used in various situations apart from those immediately guessable
+These 2 features allow the code to be used in various situations apart from those immediately guessable.
 
 ## Drawbacks
+
 - In case the last two candidates get the same number of votes and there is only one seat vacant, then according to this smart contract, the person with the lower index number in the array, i.e, the candidate who has registered earlier will be declared as winner. So to fix such tie breakers we might have to use some external conditions.
 
 - While Authorising candidates and voters, here we have assumed that the voters and candidates are authorised to begin with, but in a real-world scenario we would have to use some form of identification such as a Voter ID to authorise a person casting vote or competing in the election.
 
 - In our code the owner of the contract has the power to close nominations, open voting, close voting and declare the result. The <b>Owner</b> can manually perform these functions at the moment when they wish to do so. This flaw of manually doing such things can be automated using block timestamp and providing with the time of registration, voting and result declaration in the code initially.
+
+## Opportunities for improvement:
+
+- This version of the code does not support voters with different weightages. It treats each and every voter as the same and gives all of them the same number of votes. Often in cumulative voting we could see circumstances where each voters could be having a different power or different weight for their vote being required. We can add a 'uint256 weight' under voter and will have to modify the cast castVote function a little in order to implement it.
+- This system doesn't allow the delegation of votes and in newer versions this feature could be added.
