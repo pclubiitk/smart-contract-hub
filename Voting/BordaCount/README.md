@@ -70,3 +70,11 @@
     This function can be called by any address any number of times. This would simply return the address of the `winningcandidate_`
     > `winnerName_ = candidates[winningcandidate()].name;`
 
+
+## Contributers:
+- [Shorya Kumar](https://github.com/shoryak)
+- [Pranab Pandey](https://github.com/pranabp-bit)
+- [Piyush Agarwal](https://github.com/piyuagr)
+
+
+
