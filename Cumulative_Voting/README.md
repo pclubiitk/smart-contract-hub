@@ -1,5 +1,6 @@
 # A Solidity contract to implement the mechanism of cumulative voting
 
+By Aditya Subramanian (https://github.com/pingy711), Ayush Anand(https://github.com/yushananda) and Yash Goel(https://github.com/yashgoel72).
 ## Cumulative Voting
 
 Cumulative voting (also referred to as accumulation voting or multi-voting) is a multiple-winner cardinal voting method intended to promote more proportional representation than winner-take-all elections. A cumulative voting election permits voters in an election for more than one seat to put more than one vote on a preferred candidate. When voters in the minority concentrate their votes in this way, it increases their chances of obtaining representation in a legislative body.
