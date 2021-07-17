@@ -15,7 +15,7 @@ We have used the following functions :<br>
 5. ` Register_Voter `: For voters to register
 6. ` Register_Candidate `: For candidates to register
 7. ` vote `: For voters to vote to their specific candidate of choice
-8. ` winningProposal `: Calculates the votes recieved by each candidate and declares the winners.
+8. ` winningProposal `: Calculates the votes recieved by each candidate and declares the winners
 
 ### HOW TO USE
 * Open the sntv.sol, copy the code, then run it on [REMIX](https://remix.ethereum.org)
@@ -30,6 +30,6 @@ We have used the following functions :<br>
 
 ### Team Members
 
-- Somya Gupta
-- Girik Maskara
-- Aryan Sharma
+- [Somya Gupta](https://github.com/SG-is-me)
+- [Girik Maskara](https://github.com/girik5502)
+- [Aryan Sharma](https://github.com/Aryans-20)

@@ -5,18 +5,18 @@ pragma solidity >=0.7.0 <0.9.0;
 //Implementaion of Single Transferable Vote
 contract Ballot {
    
-    struct Voter {
+    struct Voter {                  //voter
         bool voted;  // if true, that person already voted
         bool is_candidate;
     }
-    struct Proposal {
+    struct Proposal {               //candidate
         string name;
         string party_name;    // short name (up to 32 bytes)
         
         address[] support;
         uint in_support;        //Number of votes 
     }
-        constructor(){
+        constructor(){              //to initialise the first address as the chairperson
         chairperson=msg.sender;
     }
 
@@ -27,31 +27,31 @@ contract Ballot {
     bool public can_register_voter=bool(false);
     uint public cand_num=0;
     uint public voter_num=0;
-    modifier isChairPerson(){
+    modifier isChairPerson(){                   //modifier because certain functions can only be acessed by the chairperson
         require(msg.sender==chairperson);
         _;
     }
-    function toggle_can_vote() isChairPerson public{
+    function toggle_can_vote() isChairPerson public{            //After every person votes, chairperson toggles this (to prevent multiple time voting)
         can_vote=!can_vote;
     }
-    function toggle_can_register_voter() isChairPerson public{
+    function toggle_can_register_voter() isChairPerson public{      //After registering a voter, chairperson toggles this (to prevent repetition)
         can_register_voter=!can_register_voter;
     }
-    function toggle_can_register_candidate() isChairPerson public{
+    function toggle_can_register_candidate() isChairPerson public{      //After registering a candidate, chairperson toggles this(to prevent repetition)
         can_register_candidate=!can_register_candidate;
     }
-    uint public num_seat;
-    function set_num_seat(uint num_seats) isChairPerson public{
+    uint public num_seat;                                               //no. of positions available 
+    function set_num_seat(uint num_seats) isChairPerson public{         //Chairperson sets the number of seats that can be filled using this
         num_seat=num_seats;
     }
-    function Register_Voter() public{
+    function Register_Voter() public{               //For voters to register
         if(can_register_voter){
         voters[msg.sender].voted=false;
         voter_num=voter_num+1;
         }
     }
-    Proposal[] public proposals;
-    function Register_Candidate(string memory Name,string memory party) public{
+    Proposal[] public proposals;                                                     
+    function Register_Candidate(string memory Name,string memory party) public{         //For candidates to register
         if((can_register_candidate)&&(!voters[msg.sender].is_candidate)){
             Proposal memory temp;
             temp.name=Name;
@@ -61,7 +61,7 @@ contract Ballot {
             proposals.push(temp);
         }
     }
-    function vote(uint pref) public {
+    function vote(uint pref) public {                   //For voters to vote to their specific candidate of choice
         if((can_vote)&&(!voters[msg.sender].voted)){
         voters[msg.sender].voted=true;
                 proposals[pref].support.push(msg.sender);
@@ -70,7 +70,7 @@ contract Ballot {
     }
     Proposal[] public winners;
     
-    function winningProposal() public { 
+    function winningProposal() public {             //Calculates the votes recieved by each candidate and declares the winners
         uint256 i;
         uint256 j;
         for(i=0;i<cand_num-1;i++) {
