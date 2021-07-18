@@ -49,10 +49,10 @@ contract Ballot {
         require(block.timestamp<= startRegistering + 3600*registeringDuration,"Sorry the time to register is over");
         if (ascontestant) { 
             contestants.push(Contestant({
-            name: votername,
-            voteCount: 0,
-            verified: false
-        })); 
+                name: votername,
+                voteCount: 0,
+                verified: false
+            })); 
         }
         Voter memory voter;
         voter.name=votername;
