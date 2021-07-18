@@ -25,4 +25,5 @@ In MMPR each voter casts two votes.
 #### Contributors
 
 1. [Patil Aditya Bharat](https://github.com/adip1343)
-2. Rohit Kumar
+2. [Rohit Kumar](https://github.com/rohitk87)
+3. [Abhay Yadav]() 
