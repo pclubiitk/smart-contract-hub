@@ -36,3 +36,6 @@ This can only be run by the Chairperson.
 17. Vote name1,0 using voter1's address.
 18. Vote name2,0 using voter2's address.
 19. Run WinnerName using  Chairperson's address to get the winner's name i.e. name1.
+
+## Contributors:
+This was done by [Aadeesh Jain](https://github.com/Aadeesh74) and [Nikhesh](https://github.com/nikheshd).
