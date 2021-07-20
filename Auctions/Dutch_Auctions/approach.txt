@@ -1,0 +1,108 @@
+ If a company is using a Dutch auction initial public offering (IPO), potential investors enter their bids for the number of shares they want to purchase as well as the price they are willing to pay. For example, an investor may place a bid for 100 shares at $100 while another investor offers $95 for 500 shares.
+
+Once all the bids are submitted, the allotted placement is assigned to the bidders from the highest bids down, until all of the allotted shares are assigned. However, the price that each bidder pays is based on the lowest price of all the allotted bidders, or essentially the last successful bid. Therefore, even if you bid $100 for your 1,000 shares, if the last successful bid is $80, you will only have to pay $80 for your 1,000 shares.
+
+---
+
+At a Dutch Auction, prices start high and are dropped successively until a bidder accepts the going price. Once a price is accepted, the auction ends. For example, the auctioneer starts at $2,000 for an object. The bidders watch the price decline until it reaches a price that one of the bidders accepts. No bidder sees the others’ bids until after his or her own bid is formulated, and the winning bidder is the one with the highest bid. So, if there are no bidders at $2,000, the price is lowered by $100 to $1,900. If a bidder accepts the item of interest at, say the $1,500 mark, the auction ends. 
+
+---
+
+constructor - max & min value, as well as shares of the item
+
+number of shares, given the price.
+
+emit - curr_price
+input - (shares, )
+require(total_shares >= shares)
+require(value >= shares*curr_price)
+return excess eth to sender.
+
+msg.value checks if the bidder has the needed/bidded 
+
+
+// to send ethers, an address has to be type converted to payable.
+Here is how to cast address to address payable:
+address addr = 0x****;
+address payable wallet = payable(addr);
+
+---
+
+struct Bidder {
+    address,
+    number_of_shares
+    current_price
+    time_bought
+}
+
+event currentPrice
+event bidderWhoWon
+
+valueStoredInContract
+current_price
+totalMoneyInContract
+shares
+address[] biddersWhoWon
+mapping address => struct BidderDetails
+
+constructor(max_initial_value, min_base_value, number_of_shares)
+{
+    beneficiary
+    totalMoneyInContract = 0
+    shares = number_of_shares
+}
+
+decreasePrice(decrease_price_by) isBeneficiary
+{
+    if(current_price == min_base_value)
+        endAuction()
+    
+    if(current_price - decrease_price_by <= min_base_value)
+        current_price = min_base_value
+    else
+        current_price -= decrease_price_by
+
+    emit currentPrice
+}
+
+currentPrice() view public {
+    return current_price
+}
+
+currentShares() view public {
+    return shares
+}
+
+addrOfBidderWhoWon(uint256 index) isBeneficiary {
+    return bidderWhoWon[index]
+}
+
+sharesOfBidderWhoWon(address bidder) isBeneficiary {
+    return BidderDetails[bidder].number_of_shares
+}
+
+acceptBid(asked_shares)
+{
+    if(shares == 0)
+        endAuction()
+    if (asked_shares < shares)
+        revert
+    require(msg.value >= current_price*asked_shares, "Not enough")
+    bidderWhoWon.push(msg.sender)
+    uint256 extraMoney = msg.value - current_price * asked_shares
+    payable(msg.sender).transfer(extraMoney)
+    
+    
+    BidderDetails[msg.sender].time_bought = now
+    BidderDetails[msg.sender].shares = asked_shares
+    BidderDetails[msg.sender].address = msg.sender
+    BidderDetails[msg.sender].current_price = current_price
+
+    totalMoneyInContract += msg.value - extraMoney
+    shares -= asked_shares
+    emit bidderWhoWon
+}
+
+endAuction(){
+    beneficiary.transfer(totalMoneyInContract)
+}
