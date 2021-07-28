@@ -29,4 +29,4 @@ In Parallel Voting each voter casts two votes.
 
 1. [Patil Aditya Bharat](https://github.com/adip1343)
 2. [Rohit Kumar](https://github.com/rohitk87)
-3. [Abhay Yadav]() 
+3. [Abhay Yadav](https://github.com/abhay732001) 
